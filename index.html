@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cartão Nu</title>
+    <link rel="stylesheet" href="./assets/styles.css">
+</head>
+<body>
+    <h1>Gabriel Lima</h1>
+    <br>
+
+    <div class="container">
+        <div class="content">
+            <div class="header">
+                <div class="box-img">
+                    <img src="./assets/mastercard_logo.png"  style="width: 30%;" alt="masterCard">
+                    <img src="./assets/chip.png"  style="width: 40%; transform: rotate(90deg);" alt="chip ">
+                </div>
+            </div>
+            <div class="footer">
+                <p>Gabriel Lima</p>
+                <img src="./assets/nubank_logo.png"  style="width: 35%;" alt="nubank">
+
+            </div>
+        </div>
+    </div>
+    
+
+
+
+  
+</body>
+<script>
+
+    const card = document.querySelector('.container');
+    
+    card.addEventListener('mousemove', cardefect);
+    card.addEventListener('mouseleave', cardBack);
+    
+    
+    function cardefect (event){
+        const cardwidth = card.offsetWidth;
+        const cardheight = card.offsetHeight;
+        const centerX = card.offsetLeft + cardwidth /2;
+        const centerY = card.offsetTop + cardheight /2;
+        const positionX = event.clientX - centerX;
+        const positionY = event.clientY - centerY;
+
+        const rotateX = ((+1)*25* positionY /(cardheight/2)).toFixed(2);
+        const rotateY =  ((-1)*25* positionX / (cardwidth/2)).toFixed(2);
+
+
+
+        card.style.transform = `perspective(700px) rotateX(${rotateX}deg) rotateY(${rotateY}deg)`;
+
+    }
+
+    function cardBack(event){
+       card.style.transform  = `perspective(700px) rotateX(0deg) rotateY(0deg)`;
+
+    }
+        </script>
+</html>
